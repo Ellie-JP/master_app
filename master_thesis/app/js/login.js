@@ -10,8 +10,8 @@ function verify() {
     result = 'NOT Doctor';
   }
   return result;
+  alert (result);
 }
-alert (verify());
 //console.log(verify());
 
 
