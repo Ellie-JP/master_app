@@ -1,3 +1,4 @@
+let id = 1;
 function verify(id) {
   let result;
   if (id === 1) {
@@ -8,9 +9,14 @@ function verify(id) {
   return result;
 }
 
-console.log(result);
+console.log(verify());
 //console.log(testNum(-5));
 // expected output: "NOT positive"
+
+
+
+
+//サーバーを立てるのに使えそうなコード
 //const express = require('express');
 //const app = express();
 
