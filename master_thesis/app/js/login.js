@@ -1,6 +1,7 @@
 function verify() {
   let result;
   //let id = 1
+  //let id = 2
   let id = document.getElementById('input').value;
   if (id === 1) {
     result = 'Doctor';
