@@ -12,8 +12,6 @@ function verify() {
 }
 alert (verify());
 //console.log(verify());
-//console.log(testNum(-5));
-// expected output: "NOT positive"
 
 
 
