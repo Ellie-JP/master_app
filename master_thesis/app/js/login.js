@@ -1,15 +1,17 @@
-let id = 1;
-function verify(id) {
+function verify() {
   let result;
+  //let id = 1
+  let id = document.getElementById('input').value;
   if (id === 1) {
     result = 'Doctor';
   } else {
+    console.log(id);
     result = 'NOT Doctor';
   }
   return result;
 }
-
-console.log(verify());
+alert (verify());
+//console.log(verify());
 //console.log(testNum(-5));
 // expected output: "NOT positive"
 
