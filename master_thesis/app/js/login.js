@@ -1,17 +1,23 @@
+console.log("test!");
+
 function verify() {
   let result;
   //let id = 1
   //let id = 2
   let id = document.getElementById('input').value;
-  if (id === 1) {
+  console.log(id);
+  if (id == 1) {
     result = 'Doctor';
+    window.open( '../veiws/forDoctor.html' );
   } else {
     console.log(id);
-    result = 'NOT Doctor';
+    result = 'wrong ID!';
+    alert (result);
   }
-  return result;
-  alert (result);
+  //return result;
+  //alert (result);
 }
+
 //console.log(verify());
 
 
