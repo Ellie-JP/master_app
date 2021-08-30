@@ -18,11 +18,23 @@ var fs = require('fs');
 function doRequest(req, res) {
 
     // ファイルを読み込んだら、コールバック関数を実行する。
-    fs.readFile('../veiws/login.html', 'utf-8' , doReard_loginhtml );
-    fs.readFile('../veiws/login.css', 'utf-8' , doReard_logincss );
-    fs.readFile('../veiws/forDoctor.html', 'utf-8' , doReard_forDoctor );
-    //fs.readFile('../veiws/forPeople.html', 'utf-8' , doReard_forPeople );
-    fs.readFile('login.js', 'utf-8' , doReard_loginjs );
+    switch (req.url) {
+    case "/":
+      fs.readFile('../veiws/login.html', 'utf-8', doReard_loginhtml);
+      break;
+    case "/js/login.js":
+      fs.readFile('login.js', 'utf-8', doReard_loginjs);
+      break;
+    case "/login.css":
+      fs.readFile('../veiws/login.css', 'utf-8', doReard_logincss);
+      break;
+    case "/forDoctor.html":
+      fs.readFile('../veiws/forDoctor.html', 'utf-8', doReard_forDoctor);
+      break;
+    case "/forPeople.html":
+      fs.readFile('../veiws/forPeople.html', 'utf-8', doReard_forPeople);
+      break
+    }
 
     //loginhtmlのコールバック関数
     // コンテンツを表示する。(ここでコールバック関数doReardを読み込んでいる)
@@ -53,8 +65,7 @@ function doRequest(req, res) {
     }
 
     //forDoctor.htmlのコールバック関数
-    //このコードを入れるとhttp://127.0.0.1:3000/?text=1になる。入れないとhttp://127.0.0.1:3000/veiws/forDoctor.html
-    //表示内容は同じ
+
     function doReard_forDoctor(err, data) {
         res.writeHead(200, {'Content-Type': 'text/html'});
 
@@ -63,12 +74,12 @@ function doRequest(req, res) {
     }
 
     //forPeople.htmlのコールバック関数
-  //  function doReard_forPeople(err, data) {
-      //  res.writeHead(200, {'Content-Type': 'text/html'});
+    function doReard_forPeople(err, data) {
+        res.writeHead(200, {'Content-Type': 'text/html'});
 
-    //    res.write(data);
-      //  res.end();
-    //}
+        res.write(data);
+        res.end();
+    }
 
 }
 
