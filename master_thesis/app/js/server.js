@@ -53,6 +53,8 @@ function doRequest(req, res) {
     }
 
     //forDoctor.htmlのコールバック関数
+    //このコードを入れるとhttp://127.0.0.1:3000/?text=1になる。入れないとhttp://127.0.0.1:3000/veiws/forDoctor.html
+    //表示内容は同じ
     function doReard_forDoctor(err, data) {
         res.writeHead(200, {'Content-Type': 'text/html'});
 
@@ -61,8 +63,6 @@ function doRequest(req, res) {
     }
 
     //forPeople.htmlのコールバック関数
-    //入れるとhttp://127.0.0.1:3000/?text=1になる。入れないとhttp://127.0.0.1:3000/veiws/forDoctor.html
-    //表示内容は同じ
   //  function doReard_forPeople(err, data) {
       //  res.writeHead(200, {'Content-Type': 'text/html'});
 
