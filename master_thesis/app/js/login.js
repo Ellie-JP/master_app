@@ -8,7 +8,7 @@ function verify() {
   console.log(id);
   if (id == 1) {
     result = 'Doctor';
-    window.open( '../veiws/forDoctor.html' );
+    window.open( '/forDoctor.html' );
   } else {
     console.log(id);
     result = 'wrong ID!';
@@ -19,6 +19,12 @@ function verify() {
 }
 
 //console.log(verify());
+
+
+
+
+
+
 
 
 
