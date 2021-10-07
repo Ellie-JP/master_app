@@ -1,0 +1,21 @@
+{
+  "squadName": "Doctor VC",
+
+  "members": [
+    {
+      "name": "Doctor",
+      "ID": 1,
+
+    },
+    {
+      "name": "friend",
+      "ID": 2,
+
+    },
+    {
+      "name": "normal",
+      "ID": 3,
+
+    }
+  ]
+}
