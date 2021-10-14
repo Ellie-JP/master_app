@@ -62,17 +62,6 @@ app.post('/delete/:id', (req, res) => {
 });
 
 
-// 編集画面への遷移
-// app.get('/edit/:id', (req, res) => {
-//   res.render('edit.ejs');
-// });
-// app.get('/edit/:id', (req, res) => {
-//   connection.query(
-//    'SELECT * FROM items WHERE id = ?',
-//    [req.params.id],
-//    (error, results) => {
-//      res.render('edit.ejs', {item: results[0]});
-// });
 
 
 app.get('/edit/:id', (req, res) => {
@@ -85,7 +74,7 @@ app.get('/edit/:id', (req, res) => {
 
     }
     );
-  // 下記のコードを削除してください
+
 });
 
 app.listen(3000);
