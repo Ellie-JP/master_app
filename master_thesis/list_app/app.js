@@ -37,10 +37,10 @@ app.post('/create', (req, res) => {
     'INSERT INTO items (name) VALUES (?)',
     [req.body.itemName],
     (error, results) => {
-      // 下記のコードを削除してください
 
-      // ここまで削除してください
-      // 一覧画面にリダイレクトしてください
+
+
+      // 一覧画面にリダイレクト
       res.redirect("/index");
 
     }
