@@ -63,7 +63,7 @@ app.post('/delete/:id', (req, res) => {
 
 
 // 編集画面への遷移
-app.get('/edit', (req, res) => {
+app.get('/edit/:id', (req, res) => {
   res.render('edit.ejs');
 });
 // app.get('/edit', (req, res) => {
