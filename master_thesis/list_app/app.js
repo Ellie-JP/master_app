@@ -2,9 +2,23 @@
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
+app.use(express.json())
 
+//cors追加
+
+    var cors = require('cors');
+    const corsOptions = {
+      origin: '*',
+      optionsSuccessStatus: 200
+    }
+//cors要件追加
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
+// import cors from 'cors';
+app.use(cors({ origin: true, credentials: true }));
+// Access-Control-Allow-Origin: http://localhost:3001
+// Access-Control-Allow-Credentials: true
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -13,11 +27,57 @@ const connection = mysql.createConnection({
   database: 'list_app'
 });
 
-app.get('/', (req, res) => {
-  res.render('top.ejs');
-});
+// app.get('/', (req, res) => {
+//   res.render('top.ejs');
+// });
 
-app.get('/index', (req, res) => {
+
+
+//これでターミナルにSQL出力
+connection.query(
+    "SELECT * FROM items",
+    (error,results)=>{
+      console.log(results);
+    });
+
+
+
+//dataを内部で定義
+    const data = {
+      "squadName": "Doctor VC",
+      "members": [
+        {
+          "name": "伊藤和子",
+          "ID": 1,
+          "Disease": "難病X",
+          "medicine": "治療薬X",
+          "FirstAid": "体を冷やさない",
+          "NewestResults": "検査値Y=50"
+
+        },
+        {
+          "name": "中村秀樹",
+          "ID": 2,
+          "Disease": "難病Y",
+          "medicine": "治療薬Y",
+          "FirstAid": "水を与えない",
+          "NewestResults": "検査値Y=50"
+        },
+        {
+          "name": "山田太郎",
+          "ID": 3,
+          "Disease": "難病Z",
+          "medicine": "治療薬Z",
+          "FirstAid": "日光を避ける",
+          "NewestResults": "検査値Z=30"
+        }
+      ]
+    }
+
+    // Access-Control-Allow-Origin: https://trusted-one.co.jp // CORS を許可する Origin を明示的にする
+    // Access-Control-Allow-Credentials: true
+//
+app.get('/index',cors(corsOptions), (req, res) => {
   connection.query(
     'SELECT * FROM items',
     (error, results) => {
@@ -26,13 +86,13 @@ app.get('/index', (req, res) => {
   );
 });
 
-app.get('/new', (req, res) => {
+app.get('/new',cors(corsOptions), (req, res) => {
   res.render('new.ejs');
 });
 
 
 //登録
-app.post('/create', (req, res) => {
+app.post('/create',cors(corsOptions), (req, res) => {
   connection.query(
     'INSERT INTO items (name) VALUES (?)',
     [req.body.itemName],
@@ -50,8 +110,8 @@ app.post('/create', (req, res) => {
 
 
 
-app.post('/delete/:id', (req, res) => {
-  // データベースのデータを削除する処理を書いてください
+app.post('/delete/:id',cors(corsOptions), (req, res) => {
+  // データベースのデータを削除する処理
   connection.query(
     'DELETE FROM items WHERE id = ?',
     [req.params.id],
@@ -64,7 +124,7 @@ app.post('/delete/:id', (req, res) => {
 
 
 
-app.get('/edit/:id', (req, res) => {
+app.get('/edit/:id', cors(corsOptions),(req, res) => {
   // 選択されたメモをデータベースから取得する
   connection.query(
     'SELECT * FROM items WHERE id = ?',
@@ -77,4 +137,114 @@ app.get('/edit/:id', (req, res) => {
 
 });
 
-app.listen(3000);
+//書き足し(SQLから持ってくる場合)
+
+
+
+// connection.query(
+//     "SELECT * FROM items",
+//     (error,results)=>{
+//       console.log(results);
+//     });
+
+
+//JSONで上のdataをとってきて、レスポンス待ちする関数
+// function doGetRequest(req, res) {
+//   connection.query(
+//       "SELECT * FROM items",
+//       (error,results)=>{
+//         //resultsに取ってきたデータが入る
+//         console.log(results);
+//         //resultsをjson化する
+//         res.json(results);
+//       }
+//     );
+//   console.log(req);
+// }
+//doGetRequestのレスは[/]に紐づいて実行
+// app.get('/', doGetRequest);
+
+
+// function doPostRequest(req, res){
+//   //console.log(req);
+//   console.log(req.body);
+//
+//   res.json(mysql);
+// }
+
+//相手からのレスから必要なデータを取り出し、求められたデータをjson化して送る
+// function doPostRequest(req, res){
+  //相手から送られてきたものが見られる
+  // console.log(req.body);
+  // データベースのデータをidに基づいて取得してJson化する
+//   connection.query(
+//     'SELECT * FROM items WHERE id = ?',
+//     [req.params.id],
+//     (error, results) => {
+//       res.json(results);
+//       }
+//       );
+// }
+//
+// app.post('/', doPostRequest);
+
+//ここまで
+
+
+
+
+
+
+
+
+
+//SQLでなく上のデータを使う場合
+//JSONで上のdataをとってきて、レスポンス待ち(待機)する関数
+function doGetRequest(req, res) {
+console.log(req);
+res.json(data);
+}
+
+//doGetRequestのレスは[/]に紐づいて実行
+app.get('/',cors(corsOptions), doGetRequest);
+
+//相手からのレスから必要なデータを取り出し、求められたデータをjson化して送る
+function doPostRequest(req, res){
+// console.log(req);
+//相手から送られてきたものが見られる
+// console.log(req.body);
+//consolelogが出る
+//myIDが変数として入る
+//書き足した
+
+//json化する、ダブルクォートで囲まれる
+var id_json = JSON.stringify(req.body);
+// console.log(id_json);
+//それをjsonじゃなくする
+var id_text = JSON.parse(id_json);
+//送られてきたIDの値がでてくる
+console.log(id_text.ID);
+
+//配列の番号とIDの番号のズレを直す
+var id_number = (id_text.ID)-1;
+//探したい患者の配列番号がでてくる
+console.log(id_number);
+
+var patient_data = (data.members[id_number]);
+//送られてきたを持つ患者のデータが表示がでてくる
+console.log(patient_data);
+
+
+
+res.json(patient_data);
+}
+
+app.post('/',cors(corsOptions), doPostRequest);
+
+
+
+
+
+
+app.listen(3001);
+console.log("http://localhost:3001/index");
