@@ -1,0 +1,34 @@
+\contentsline {chapter}{\numberline {第1章}序論}{1}{}%
+\contentsline {section}{\numberline {1.1}背景}{1}{}%
+\contentsline {section}{\numberline {1.2}本文書の構成}{1}{}%
+\contentsline {chapter}{\numberline {第2章}本研究の課題}{3}{}%
+\contentsline {section}{\numberline {2.1}医療情報の共有}{3}{}%
+\contentsline {section}{\numberline {2.2}患者のプライバシー}{3}{}%
+\contentsline {section}{\numberline {2.3}患者の身体的負担}{3}{}%
+\contentsline {chapter}{\numberline {第3章}技術背景}{7}{}%
+\contentsline {section}{\numberline {3.1}DID}{7}{}%
+\contentsline {section}{\numberline {3.2}VC}{7}{}%
+\contentsline {chapter}{\numberline {第4章}提案手法}{9}{}%
+\contentsline {section}{\numberline {4.1}選択的医療情報開示}{9}{}%
+\contentsline {section}{\numberline {4.2}選択的な資格の開示}{10}{}%
+\contentsline {chapter}{\numberline {第5章}実装}{11}{}%
+\contentsline {section}{\numberline {5.1}システム設計}{11}{}%
+\contentsline {subsection}{\numberline {5.1.1}VC発行までの流れ}{11}{}%
+\contentsline {subsection}{\numberline {5.1.2}ユースケースに沿ったデータの流れ}{11}{}%
+\contentsline {subsubsection}{\numberline {(1)}医療情報があるデータベースを作成する}{11}{}%
+\contentsline {subsubsection}{\numberline {(2)}患者の医療情報と応急処置情報があるデータベースの位置を示すQRコードを発行する}{12}{}%
+\contentsline {subsubsection}{\numberline {(3)}カードの保管場所を知らせる(口頭及びチャットアプリなど)}{12}{}%
+\contentsline {subsubsection}{\numberline {(4)}QRコードをスキャンする機能を持つデバイス(モバイルアプリetc)でスキャンする}{12}{}%
+\contentsline {subsubsection}{\numberline {(5)}QRコードのアクセス情報に従いデータベースを参照する(図5.2\@setref@ {})}{12}{}%
+\contentsline {subsubsection}{\numberline {(6)}医師BのVCの検証}{12}{}%
+\contentsline {subsubsection}{\numberline {(7)}医師Aの公開鍵で署名を複合して検証する(現段階ではここの検証は重視しない)}{13}{}%
+\contentsline {subsubsection}{\numberline {(8)}なんのデータを送るかを決定する}{13}{}%
+\contentsline {subsubsection}{\numberline {(9)}それぞれの端末に表示する。}{13}{}%
+\contentsline {section}{\numberline {5.2}結果}{14}{}%
+\contentsline {subsection}{\numberline {5.2.1}従来方式との項目別評価}{14}{}%
+\contentsline {subsection}{\numberline {5.2.2}従来方式とのフロー比較}{14}{}%
+\contentsline {chapter}{\numberline {第6章}結論}{15}{}%
+\contentsline {section}{\numberline {6.1}まとめ}{15}{}%
+\contentsline {section}{\numberline {6.2}展望}{15}{}%
+\contentsline {chapter}{謝辞}{16}{}%
+\contentsline {chapter}{参考文献}{18}{}%
